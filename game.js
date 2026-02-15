@@ -1115,8 +1115,17 @@ new Phaser.Game({
   height: 1536,
   parent: 'game',
   backgroundColor: '#000',
-  scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
+
+  scale: {
+    mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH
+  },
+
+  loader: {
+    baseURL: window.location.hostname.includes('github.io')
+      ? '/memejumper/'
+      : ''
+  },
+
   scene: [BootScene, TitleScene, GameScene]
 });
-
-
