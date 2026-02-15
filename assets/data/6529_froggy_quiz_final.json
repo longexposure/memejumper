@@ -1,0 +1,60 @@
+{
+  "easy": [
+    {"q":"How many SZN are released per year?","answers":["4","3","5"],"correct":0},
+    {"q":"What type of NFT are the meme cards?","answers":["ERC-1155","ERC-721","ERC-404"],"correct":0},
+    {"q":"What does OM mean?","answers":["Open Metaverse","Open Marketplace","On-chain Metadata"],"correct":0},
+    {"q":"What does TAP mean?","answers":["Three Address Protocol","Token Access Program","Transparent Allocation Process"],"correct":0},
+    {"q":"What license are meme cards released under?","answers":["CC0","MIT","GPL"],"correct":0},
+    {"q":"On which blockchain are The Memes minted?","answers":["Ethereum","Solana","Bitcoin"],"correct":0},
+    {"q":"What does CC0 mean?","answers":["Creative Commons Zero","Crypto Copyright Option","Community Curated Ownership"],"correct":0},
+    {"q":"What are ReMemes?","answers":["Community-made derivatives","Official sequels","Burned cards"],"correct":0},
+    {"q":"What is the mint price of the meme cards?","answers":["0.06529 ETH","0.069 ETH","0.006529 ETH"],"correct":0},
+    {"q":"Who can create a ReMeme?","answers":["Anyone","Only approved artists","Only core team"],"correct":0},
+    {"q":"How many NFTs are in the Gradient Collection?","answers":["101","100","99"],"correct":0},
+    {"q":"What does TDH stand for?","answers":["Total Days Held","Token Depth History","Time Driven Hash"],"correct":0},
+    {"q":"Which card has the smallest supply?","answers":["#4 Nakamoto Freedom","#37 Sgt. Pepe","#8 First GM"],"correct":0},
+    {"q":"When is TDH recalculated?","answers":["Daily at 00:00 UTC","Every block","Weekly"],"correct":0},
+    {"q":"Which card has the highest supply among the first 10 SZN?","answers":["#8 First GM","#1 6529 Seizing","#57 Copepe"],"correct":0},
+    {"q":"What is the supply of each of the first three meme cards?","answers":["1000","1069","1420"],"correct":0},
+    {"q":"What is the supply of #4 Nakamoto Freedom?","answers":["300","310","369"],"correct":0}
+  ],
+
+  "medium": [
+    {"q":"How many memes are there in SZN 1?","answers":["47","42","33"],"correct":0},
+    {"q":"How often do Meme Cards drop during active seasons?","answers":["Three times per week","Daily","Weekly"],"correct":0},
+    {"q":"Who was the first artist in the 6529 meme cards?","answers":["6529er","Arsonic","ACK"],"correct":0},
+    {"q":"On which days do Meme Cards usually drop?","answers":["Monday, Wednesday, Friday","Tuesday, Thursday","Weekends"],"correct":0},
+    {"q":"When were the first three meme cards launched?","answers":["June 2022","July 2022","May 2022"],"correct":0},
+    {"q":"What is Brain in the 6529 ecosystem?","answers":["A decentralized decision and social platform","A trading engine","A rarity tracker"],"correct":0},
+    {"q":"What is the name of the first meme card?","answers":["6529 Seizing","SeizeJPGs","UncleSeize"],"correct":0},
+    {"q":"According to 6529.io, what are memes?","answers":["Intersubjective myths","Internet jokes only","Marketing slogans"],"correct":0},
+    {"q":"What is the name of the set formed by the first three cards?","answers":["Genesis Set","Founders Set","Origin Drop"],"correct":0},
+    {"q":"Who selected the Meme Cards from Season 1 through Season 10?","answers":["Punk6529 & 6529er","The community","Punk6529"],"correct":0},
+    {"q":"Which meme card number is Nakamoto Freedom?","answers":["#4","#5","#6"],"correct":0},
+    {"q":"Who is the artist of meme card #4 Nakamoto Freedom?","answers":["6529er","ACK","OSF"],"correct":0},
+    {"q":"What format are Gradient artworks stored as on-chain?","answers":["SVG","PNG","JPG"],"correct":0},
+    {"q":"Why is Gradient #50 special?","answers":["It is an animated GIF","It is burned","It is off-chain"],"correct":0},
+    {"q":"Which meme card number is Sgt. Pepe?","answers":["#37","#69","#42"],"correct":0},
+    {"q":"Who is the artist of meme card #8 First GM?","answers":["Punk6529","6529er","ACK"],"correct":0},
+    {"q":"Who is the artist of meme card #69?","answers":["6529er","Cath Simard","VincentVanDough"],"correct":0},
+    {"q":"Who is the artist of the first card in SZN 2?","answers":["Cath Simard","Grant Riven Yun","6529er"],"correct":0},
+    {"q":"Do Meme NFT owners receive exclusive IP rights?","answers":["No","Yes","Only resale rights"],"correct":0}
+  ],
+
+  "hard": [
+    {"q":"What is the supply of #8 First GM?","answers":["3941","3420","3069"],"correct":0},
+    {"q":"How many cards are there in the first 10 SZN?","answers":["342","420","369"],"correct":0},
+    {"q":"Who is the artist of the last card in SZN 1?","answers":["XCOPY","Arsonic","6529er"],"correct":0},
+    {"q":"In how many cards does Pepe the Frog appear in the first 10 SZN?","answers":["165","169","167"],"correct":0},
+    {"q":"How many cards did 6529er publish in the first 10 SZN?","answers":["13","10","12"],"correct":0},
+    {"q":"What is the most used theme in the first 10 SZN?","answers":["Survive","Seize the Memes of Production","Freedom to Transact"],"correct":0},
+    {"q":"What is the least used theme in the first 10 SZN?","answers":["Use a Hardware Wallet","TAP","Summer.jpg"],"correct":0},
+    {"q":"What is the Nakamoto Threshold rule?","answers":["All Cards except #4 must exceed 300 editions","All cards must be exactly 300","All cards must exceed 300"],"correct":0},
+    {"q":"In how many cards does the gradient appear in the first 10 SZN?","answers":["148","169","150"],"correct":0},
+    {"q":"Why does Meme Card #4 have 300 editions?","answers":["It honors the first Rare Pepe edition size","It matched gas limits","It was voted by holders"],"correct":0},
+    {"q":"Which collection sets TDH baseline weight = 1?","answers":["FirstGM (edition 3,941)","Gradients","Nakamoto Freedom"],"correct":0},
+    {"q":"Starting from SZN7, extra copies to reach threshold are sent to which address?","answers":["research.6529.eth","burn.6529.eth","treasury.6529.eth"],"correct":0},
+    {"q":"Who curates the Meme Cards starting from Season 11?","answers":["The community","Punk6529 & 6529er","6529 Foundation"],"correct":0},
+    {"q":"What is guaranteed about Meme Card #4?","answers":["It has the smallest edition at 300","It has the highest edition","It was the last SZN1 card"],"correct":0}
+  ]
+}
