@@ -41,7 +41,7 @@
     {"q":"What is the name of the first meme card?","answers":["6529 Seizing","SeizeJPGs","UncleSeize"],"correct":0},
     {"q":"According to 6529.io, what are memes?","answers":["Intersubjective myths","Internet jokes only","Marketing slogans"],"correct":0},
     {"q":"What is the name of the set formed by the first three cards?","answers":["Genesis Set","Founders Set","Origin Drop"],"correct":0},
-    {"q":"Who selected the Meme Cards from Season 1 through Season 10?","answers":["Punk6529 & 6529er","The community","Punk6529"],"correct":0},
+    {"q":"Who curated the Meme Cards from Season 1 through Season 10?","answers":["Punk6529 & 6529er","The community","Punk6529"],"correct":0},
     {"q":"Which meme card number is Nakamoto Freedom?","answers":["#4","#5","#6"],"correct":0},
     {"q":"Who is the artist of meme card #4 Nakamoto Freedom?","answers":["6529er","ACK","OSF"],"correct":0},
     {"q":"What format are Gradient artworks stored as on-chain?","answers":["SVG","PNG","JPG"],"correct":0},
@@ -54,6 +54,7 @@
     {"q":"How many cards did Punk6529 create in the first 10 SZN?","answers":["2","3","4"],"correct":0},
     {"q":"What TDH boost is granted by holding a Genesis Set?","answers":["0.01","0.05","0.10"],"correct":0},
     {"q":"What TDH boost do Gradients provide?","answers":["0.10","0.05","0.01"],"correct":0}
+    
 
 
 
