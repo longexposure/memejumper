@@ -498,13 +498,17 @@ this.timerCircle.lineStyle(4, isDanger ? 0xff3b3b : 0xffffff, 1);
     leaf.removeAllListeners();
     leaf.setInteractive({ useHandCursor: true });
 
-    leaf.on('pointerover', () => leaf.setScale(1.08));
-    leaf.on('pointerout', () => leaf.setScale(1));
-
     leaf.on('pointerdown', () => {
-      if (this.isResolving) return;
-      this.handleAnswer(i, leaf);
-    });
+
+  if (this.isResolving) return;
+
+  // ⏱️ tiempo exacto en el click
+  this.responseTime = this.time.now - this.questionStartTime;
+
+  this.handleAnswer(i, leaf);
+
+});
+
   }
 
   enableRow1() {
@@ -550,30 +554,29 @@ this.timerCircle.lineStyle(4, isDanger ? 0xff3b3b : 0xffffff, 1);
      ACIERTO
   ========================= */
   handleCorrect() {
-    if (this.questionTimer) this.questionTimer.remove(false);
 
-    this.time.delayedCall(100, () => {
-  if (this.sfxCorrect) this.sfxCorrect.play();
-});
+  if (this.questionTimer) this.questionTimer.remove(false);
 
+  this.time.delayedCall(100, () => {
+    if (this.sfxCorrect) this.sfxCorrect.play();
+  });
 
+  const responseTime = this.responseTime;   // ✅ AQUÍ
 
-   const responseTime = this.time.now - this.questionStartTime;
+  let points;
 
-let points;
-
-if (responseTime <= 3000) {
-  points = 4000;          // súper rápida
-}
-else if (responseTime <= 6000) {
-  points = 3000;          // rápida
-}
-else if (responseTime <= 8000) {
-  points = 2000;          // media
-}
-else {
-  points = 1000;          // lenta
-}
+  if (responseTime <= 3000) {
+    points = 4000;
+  }
+  else if (responseTime <= 6000) {
+    points = 3000;
+  }
+  else if (responseTime <= 8000) {
+    points = 2000;
+  }
+  else {
+    points = 1000;
+  }
 
 
 
