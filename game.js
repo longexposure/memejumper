@@ -566,7 +566,7 @@ if (responseTime <= 3000) {
   points = 3000;          // rápida
 }
 else if (responseTime <= 6000) {
-  points = 2500;          // media
+  points = 2000;          // media
 }
 else {
   points = 1000;          // lenta
