@@ -498,17 +498,13 @@ this.timerCircle.lineStyle(4, isDanger ? 0xff3b3b : 0xffffff, 1);
     leaf.removeAllListeners();
     leaf.setInteractive({ useHandCursor: true });
 
+    leaf.on('pointerover', () => leaf.setScale(1.08));
+    leaf.on('pointerout', () => leaf.setScale(1));
+
     leaf.on('pointerdown', () => {
-
-  if (this.isResolving) return;
-
-  // ⏱️ tiempo exacto en el click
-  this.responseTime = this.time.now - this.questionStartTime;
-
-  this.handleAnswer(i, leaf);
-
-});
-
+      if (this.isResolving) return;
+      this.handleAnswer(i, leaf);
+    });
   }
 
   enableRow1() {
@@ -554,30 +550,27 @@ this.timerCircle.lineStyle(4, isDanger ? 0xff3b3b : 0xffffff, 1);
      ACIERTO
   ========================= */
   handleCorrect() {
+    if (this.questionTimer) this.questionTimer.remove(false);
 
-  if (this.questionTimer) this.questionTimer.remove(false);
+    this.time.delayedCall(100, () => {
+  if (this.sfxCorrect) this.sfxCorrect.play();
+});
 
-  this.time.delayedCall(100, () => {
-    if (this.sfxCorrect) this.sfxCorrect.play();
-  });
 
-  const responseTime = this.responseTime;   // ✅ AQUÍ
 
-  let points;
+   const responseTime = this.time.now - this.questionStartTime;
 
-  if (responseTime <= 3000) {
-    points = 4000;
-  }
-  else if (responseTime <= 6000) {
-    points = 3000;
-  }
-  else if (responseTime <= 8000) {
-    points = 2000;
-  }
-  else {
-    points = 1000;
-  }
+let points;
 
+if (responseTime <= 3000) {
+  points = 3000;          // rápida
+}
+else if (responseTime <= 6000) {
+  points = 2500;          // media
+}
+else {
+  points = 1000;          // lenta
+}
 
 
 
@@ -585,47 +578,27 @@ this.timerCircle.lineStyle(4, isDanger ? 0xff3b3b : 0xffffff, 1);
     this.scoreText.setText(this.score);
     
 
-    // 🎨 color según velocidad
-let color = '#ffffff';
+    const floatingPoints = this.add.text(
+      this.frog.x,
+      this.frog.y - 60,
+      '+' + points,
+      {
+        fontFamily: 'Arial',
+        fontSize: '80px',
+        color: '#ffd700',
+        stroke: '#000000',
+        strokeThickness: 4
+      }
+    ).setOrigin(0.5).setDepth(20);
 
-if (points === 4000) color = '#00ff88';      // verde
-else if (points === 3000) color = '#00e5ff'; // azul
-else if (points === 2000) color = '#ffd700'; // dorado
-else color = '#ffffff';                      // blanco
-
-
-const floatingPoints = this.add.text(
-  this.frog.x,
-  this.frog.y - 60,
-  '+' + points,
-  {
-    fontFamily: 'Arial',
-    fontSize: '80px',
-    color: color,
-    stroke: '#000000',
-    strokeThickness: 4
-  }
-).setOrigin(0.5).setDepth(20);
-
-
-// ✨ glow arcade
-floatingPoints.setShadow(0, 0, color, 25, true, true);
-
-
-// 🎬 animación única
-this.tweens.add({
-  targets: floatingPoints,
-  y: floatingPoints.y - 60,
-  alpha: 0,
-  scale: 1.15,
-  duration: 1300,
-  ease: 'Power1',
-  onComplete: () => floatingPoints.destroy()
-});
-
-
-
-  
+    this.tweens.add({
+      targets: floatingPoints,
+      y: floatingPoints.y - 60,
+      alpha: 0,
+      duration: 1300,
+      ease: 'Power1',
+      onComplete: () => floatingPoints.destroy()
+    });
 
     this.time.delayedCall(500, () => {
       this.moveRowsDown(() => {
@@ -1156,3 +1129,4 @@ new Phaser.Game({
 
   scene: [BootScene, TitleScene, GameScene]
 });
+
