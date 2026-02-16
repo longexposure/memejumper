@@ -18,7 +18,13 @@
     {"q":"What is the supply of each of the first three meme cards?","answers":["1000","1069","1420"],"correct":0},
     {"q":"What is the supply of #4 Nakamoto Freedom?","answers":["300","310","369"],"correct":0},
     {"q":"What was the first Meme Card curated by the community?","answers":["PepeX","Guardian of CC0","We are the Meme Builders"],"correct":0},
-    {"q":"What is the supply of Sgt. Pepe?","answers":["420","469","369"],"correct":0}
+    {"q":"What is the supply of Sgt. Pepe?","answers":["420","469","369"],"correct":0},
+    {"q":"What metric is used for voting power in Brain?","answers":["TDH","ETH balance","Total Meme cards owned"],"correct":0},
+    {"q":"What does TDH weighting take into account besides days held?","answers":["Edition size","Market price","Artist popularity"],"correct":0},
+    {"q":"How are TDH boosters applied in the TDH formula?","answers":["They multiply the base TDH score","They replace edition weighting","They add ETH value"],"correct":0}
+
+
+
 
 
     
@@ -26,6 +32,7 @@
 
   "medium": [
     {"q":"How many memes are there in SZN 1?","answers":["47","42","33"],"correct":0},
+    {"q":"What TDH boost do you receive for completing a single SZN?","answers":["0.05","0.01","0.10"],"correct":0},
     {"q":"How often do Meme Cards drop during active seasons?","answers":["Three times per week","Daily","Weekly"],"correct":0},
     {"q":"Who was the first artist in the 6529 meme cards?","answers":["6529er","Arsonic","ACK"],"correct":0},
     {"q":"On which days do Meme Cards usually drop?","answers":["Monday, Wednesday, Friday","Tuesday, Thursday","Weekends"],"correct":0},
@@ -44,7 +51,11 @@
     {"q":"Who is the artist of meme card #69?","answers":["6529er","Cath Simard","VincentVanDough"],"correct":0},
     {"q":"Who is the artist of the first card in SZN 2?","answers":["Cath Simard","Grant Riven Yun","6529er"],"correct":0},
     {"q":"Do Meme NFT owners receive exclusive IP rights?","answers":["No","Yes","Only resale rights"],"correct":0},
-    {"q":"How many cards did Punk6529 create in the first 10 SZN?","answers":["2","3","4"],"correct":0}
+    {"q":"How many cards did Punk6529 create in the first 10 SZN?","answers":["2","3","4"],"correct":0},
+    {"q":"What TDH boost is granted by holding a Genesis Set?","answers":["0.01","0.05","0.10"],"correct":0},
+    {"q":"What TDH boost do Gradients provide?","answers":["0.10","0.05","0.01"],"correct":0}
+
+
 
   ],
 
