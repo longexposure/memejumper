@@ -16,7 +16,12 @@
     {"q":"When is TDH recalculated?","answers":["Daily at 00:00 UTC","Every block","Weekly"],"correct":0},
     {"q":"Which card has the highest supply among the first 10 SZN?","answers":["#8 First GM","#1 6529 Seizing","#57 Copepe"],"correct":0},
     {"q":"What is the supply of each of the first three meme cards?","answers":["1000","1069","1420"],"correct":0},
-    {"q":"What is the supply of #4 Nakamoto Freedom?","answers":["300","310","369"],"correct":0}
+    {"q":"What is the supply of #4 Nakamoto Freedom?","answers":["300","310","369"],"correct":0},
+    {"q":"What was the first Meme Card curated by the community?","answers":["PepeX","Guardian of CC0","We are the Meme Builders"],"correct":0},
+    {"q":"What is the supply of Sgt. Pepe?","answers":["420","469","369"],"correct":0}
+
+
+    
   ],
 
   "medium": [
@@ -38,11 +43,14 @@
     {"q":"Who is the artist of meme card #8 First GM?","answers":["Punk6529","6529er","ACK"],"correct":0},
     {"q":"Who is the artist of meme card #69?","answers":["6529er","Cath Simard","VincentVanDough"],"correct":0},
     {"q":"Who is the artist of the first card in SZN 2?","answers":["Cath Simard","Grant Riven Yun","6529er"],"correct":0},
-    {"q":"Do Meme NFT owners receive exclusive IP rights?","answers":["No","Yes","Only resale rights"],"correct":0}
+    {"q":"Do Meme NFT owners receive exclusive IP rights?","answers":["No","Yes","Only resale rights"],"correct":0},
+    {"q":"How many cards did Punk6529 create in the first 10 SZN?","answers":["2","3","4"],"correct":0}
+
   ],
 
   "hard": [
     {"q":"What is the supply of #8 First GM?","answers":["3941","3420","3069"],"correct":0},
+    {"q":"How many cards were co-created by 6529er and Punk6529 in the first 10 SZN?","answers":["7","6","5"],"correct":0},
     {"q":"How many cards are there in the first 10 SZN?","answers":["342","420","369"],"correct":0},
     {"q":"Who is the artist of the last card in SZN 1?","answers":["XCOPY","Arsonic","6529er"],"correct":0},
     {"q":"In how many cards does Pepe the Frog appear in the first 10 SZN?","answers":["165","169","167"],"correct":0},
