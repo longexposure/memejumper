@@ -582,18 +582,44 @@ else {
     this.scoreText.setText(this.score);
     
 
-    const floatingPoints = this.add.text(
-      this.frog.x,
-      this.frog.y - 60,
-      '+' + points,
-      {
-        fontFamily: 'Arial',
-        fontSize: '80px',
-        color: '#ffd700',
-        stroke: '#000000',
-        strokeThickness: 4
-      }
-    ).setOrigin(0.5).setDepth(20);
+    // 🎨 color según velocidad
+let color = '#ffffff';
+
+if (points === 4000) color = '#00ff88';   // perfecto — verde neón
+else if (points === 3000) color = '#00e5ff'; // rápido — azul
+else if (points === 2000) color = '#ffd700'; // medio — dorado
+else color = '#ffffff';                   // lento — blanco
+
+
+const floatingPoints = this.add.text(
+  this.frog.x,
+  this.frog.y - 60,
+  '+' + points,
+  {
+    fontFamily: 'Arial',
+    fontSize: '80px',
+    color: color,
+    stroke: '#000000',
+    strokeThickness: 4
+  }
+).setOrigin(0.5).setDepth(20);
+
+
+// ✨ pequeño glow arcade
+floatingPoints.setShadow(0, 0, color, 25, true, true);
+
+
+// 🎬 animación subida + fade
+this.tweens.add({
+  targets: floatingPoints,
+  y: floatingPoints.y - 60,
+  alpha: 0,
+  scale: 1.15,
+  duration: 1300,
+  ease: 'Power1',
+  onComplete: () => floatingPoints.destroy()
+});
+
 
     this.tweens.add({
       targets: floatingPoints,
