@@ -585,10 +585,10 @@ else {
     // 🎨 color según velocidad
 let color = '#ffffff';
 
-if (points === 4000) color = '#00ff88';   // perfecto — verde neón
-else if (points === 3000) color = '#00e5ff'; // rápido — azul
-else if (points === 2000) color = '#ffd700'; // medio — dorado
-else color = '#ffffff';                   // lento — blanco
+if (points === 4000) color = '#00ff88';      // verde
+else if (points === 3000) color = '#00e5ff'; // azul
+else if (points === 2000) color = '#ffd700'; // dorado
+else color = '#ffffff';                      // blanco
 
 
 const floatingPoints = this.add.text(
@@ -605,11 +605,11 @@ const floatingPoints = this.add.text(
 ).setOrigin(0.5).setDepth(20);
 
 
-// ✨ pequeño glow arcade
+// ✨ glow arcade
 floatingPoints.setShadow(0, 0, color, 25, true, true);
 
 
-// 🎬 animación subida + fade
+// 🎬 animación única
 this.tweens.add({
   targets: floatingPoints,
   y: floatingPoints.y - 60,
@@ -621,14 +621,8 @@ this.tweens.add({
 });
 
 
-    this.tweens.add({
-      targets: floatingPoints,
-      y: floatingPoints.y - 60,
-      alpha: 0,
-      duration: 1300,
-      ease: 'Power1',
-      onComplete: () => floatingPoints.destroy()
-    });
+
+  
 
     this.time.delayedCall(500, () => {
       this.moveRowsDown(() => {
