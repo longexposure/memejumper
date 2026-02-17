@@ -563,7 +563,7 @@ this.timerCircle.lineStyle(4, isDanger ? 0xff3b3b : 0xffffff, 1);
 let points;
 
 if (responseTime <= 3000) {
-  points = 4000;          // rápida
+  points = 3000;          // rápida
 }
 else if (responseTime <= 6000) {
   points = 2000;          // media
