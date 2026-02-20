@@ -1,6 +1,7 @@
 {
   "easy": [
     {"q":"How many SZN are released per year?","answers":["4","3","5"],"correct":0},
+    {"q":"What is the most common supply in Meme Cards SZN 1–10?","answers":["310","333","369"],"correct":0},
     {"q":"What type of NFT are the meme cards?","answers":["ERC-1155","ERC-721","ERC-404"],"correct":0},
     {"q":"What does OM mean?","answers":["Open Metaverse","Open Marketplace","On-chain Metadata"],"correct":0},
     {"q":"What does TAP mean?","answers":["Three Address Protocol","Token Access Program","Transparent Allocation Process"],"correct":0},
@@ -19,9 +20,17 @@
     {"q":"What is the supply of #4 Nakamoto Freedom?","answers":["300","310","369"],"correct":0},
     {"q":"What was the first Meme Card curated by the community?","answers":["PepeX","Guardian of CC0","We are the Meme Builders"],"correct":0},
     {"q":"What is the supply of Sgt. Pepe?","answers":["420","469","369"],"correct":0},
+    {"q":"Which artist created 'DALL-E's Revenge'?","answers":["ACK","Botto","Beeple"],"correct":0},
+    {"q":"Only one of these statements is FALSE about The Memes. Which one?","answers":["TDH = Total Dollar Holdings","ERC-1155 tokens","CC0 license"],"correct":0},
     {"q":"What metric is used for voting power in Brain?","answers":["TDH","ETH balance","Total Meme cards owned"],"correct":0},
+    {"q":"Who is the artist of Meme Card #103 Don't Trust, Check.?","answers":["Jack Butcher","XCOPY","ACK"],"correct":0},
     {"q":"What does TDH weighting take into account besides days held?","answers":["Edition size","Market price","Artist popularity"],"correct":0},
-    {"q":"How are TDH boosters applied in the TDH formula?","answers":["They multiply the base TDH score","They replace edition weighting","They add ETH value"],"correct":0}
+    {"q":"When did DEKAY first appear in The Memes collection?","answers":["SZN 3","SZN 2","SZN 4"],"correct":0},
+    {"q":"How are TDH boosters applied in the TDH formula?","answers":["They multiply the base TDH score","They replace edition weighting","They add ETH value"],"correct":0},
+    {"q":"What factor reduces TDH weight per card?","answers":["Higher supply","Higher price","Older mint date"],"correct":0},
+    {"q":"Which provides more TDH boost: one SZN or Gradients?","answers":["Gradients","One SZN","Same boost"],"correct":0},
+    {"q":"Who appeared first in The Memes collection?","answers":["Grant Riven Yun","VincentVanDough","DEEKAY"],"correct":0}
+    
 
 
 
@@ -32,6 +41,8 @@
 
   "medium": [
     {"q":"How many memes are there in SZN 1?","answers":["47","42","33"],"correct":0},
+    {"q":"How many Meme Cards have a supply of 420 in SZN 1–10?","answers":["10","9","8"],"correct":0},
+    {"q":"Who created the first Meme Card in SZN 3?","answers":["DEEKAY","Grant Riven Yun","6529er"],"correct":0},
     {"q":"What TDH boost do you receive for completing a single SZN?","answers":["0.05","0.01","0.10"],"correct":0},
     {"q":"How often do Meme Cards drop during active seasons?","answers":["Three times per week","Daily","Weekly"],"correct":0},
     {"q":"Who was the first artist in the 6529 meme cards?","answers":["6529er","Arsonic","ACK"],"correct":0},
@@ -53,7 +64,17 @@
     {"q":"Do Meme NFT owners receive exclusive IP rights?","answers":["No","Yes","Only resale rights"],"correct":0},
     {"q":"How many cards did Punk6529 create in the first 10 SZN?","answers":["2","3","4"],"correct":0},
     {"q":"What TDH boost is granted by holding a Genesis Set?","answers":["0.01","0.05","0.10"],"correct":0},
+    {"q":"Which of these is NOT a supply used in SZN 1–10?","answers":["314","315","313"],"correct":0},
+    {"q":"Which of these supplies is rarer in SZN 1–10?","answers":["1776","1420","1000"],"correct":0},
+    {"q":"In the 6529 calendar, how many Years are in one Epoch?","answers":["4","5","3"],"correct":0},
+    {"q":"When did Botto first appear in The Memes collection?","answers":["Card #118 — SZN 4","Card #96 — SZN 3","Card #169 — SZN 5"],"correct":0},
+    {"q":"Who was the first photographer to publish a Meme Card?","answers":["Reuben Wu","Rakesh Pulapa","Drift"],"correct":0},
+    {"q":"Which female artist appeared first in The Memes?","answers":["Ayla El-Moussa","ALIENQUEEN","Priyanka"],"correct":0},
+    {"q":"What marks the end boundary of Epoch 1 in 6529 Calendar?","answers":["Dec 2026","Dec 2027","Dec 2028"],"correct":0},
+    {"q":"In the 6529 calendar hierarchy,what is the smallest unit?","answers":["SZN","Year","Epoch"],"correct":0},
+    {"q":"Only one statement is TRUE about the Meme Calendar","answers":["1 PERIOD = 5 EPOCHs","1 YEAR = 5 SZN","1 ERA = 4 PERIODs"],"correct":0},
     {"q":"What TDH boost do Gradients provide?","answers":["0.10","0.05","0.01"],"correct":0}
+    
     
 
 
@@ -65,6 +86,7 @@
     {"q":"How many cards were co-created by 6529er and Punk6529 in the first 10 SZN?","answers":["7","6","5"],"correct":0},
     {"q":"How many cards are there in the first 10 SZN?","answers":["342","420","369"],"correct":0},
     {"q":"Who is the artist of the last card in SZN 1?","answers":["XCOPY","Arsonic","6529er"],"correct":0},
+    {"q":"In 6529 Calendar, which card closes Epoch 1?","answers":["#594","#569","#549"],"correct":0},
     {"q":"In how many cards does Pepe the Frog appear in the first 10 SZN?","answers":["165","169","167"],"correct":0},
     {"q":"How many cards did 6529er publish in the first 10 SZN?","answers":["13","10","12"],"correct":0},
     {"q":"What is the most used theme in the first 10 SZN?","answers":["Survive","Seize the Memes of Production","Freedom to Transact"],"correct":0},
