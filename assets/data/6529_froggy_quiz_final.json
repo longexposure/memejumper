@@ -27,8 +27,17 @@
     {"q":"What was the first Meme Card curated by the community?","answers":["PepeX","Guardian of CC0","We are the Meme Builders"],"correct":0},
     {"q":"What is the supply of Sgt. Pepe?","answers":["420","469","369"],"correct":0},
     {"q":"Which artist created 'DALL-E's Revenge'?","answers":["ACK","Botto","Beeple"],"correct":0},
-    {"q":"Only one of these statements is FALSE about The Memes. Which one?","answers":["TDH = Total Dollar Holdings","ERC-1155 tokens","CC0 license"],"correct":0},
+    {"q":"TDH base weight decreases when edition size does what?","answers":["Increases","Decreases","Stays equal"],"correct":0},
+    {"q":"Only one of these statements is FALSE about The Memes","answers":["TDH = Total Dollar Holdings","ERC-1155 tokens","CC0 license"],"correct":0},
     {"q":"What metric is used for voting power in Brain?","answers":["TDH","ETH balance","Total Meme cards owned"],"correct":0},
+    {"q":"Which supply appears more often in Meme Cards SZN 1–10?","answers":["310","369","420"],"correct":0},
+    {"q":"Only one of these statements about The Memes is TRUE","answers":["Memes are released under CC0","Memes are ERC-721","Memes mint on Bitcoin"],"correct":0},
+    {"q":"What color does Gradient #0 represent?","answers":["White","Black","Gray"],"correct":0},
+    {"q":"How many cards does the artist typically receive from their mint?","answers":["20","10","30"],"correct":0},
+    {"q":"What does the Level score combine in 6529 Identity?","answers":["TDH and Rep","Rep and NIC","TDH and ETH"],"correct":0},
+    {"q":"What original phrase inspired “Seize the Memes of Production”?","answers":["Seize the means of production","Seize the modes of production","Seize the tools of production"],"correct":0},
+    {"q":"Only one of these statements about First GM (#8) is FALSE","answers":["Supply is 310","Supply is 3941","It sets TDH baseline"],"correct":0},
+    {"q":"Only one of these statements about Gradients is TRUE","answers":["Gradient #50 is animated","All Gradients are PNG files","There are exactly 100 Gradients"],"correct":0},
     {"q":"Who appeared first in The Memes collection?","answers":["Grant Riven Yun","VincentVanDough","DEEKAY"],"correct":0}
     
 
@@ -71,7 +80,9 @@
     {"q":"Which of these is NOT a supply used in SZN 1–10?","answers":["314","315","313"],"correct":0},
     {"q":"Which of these supplies is rarer in SZN 1–10?","answers":["1776","1420","1000"],"correct":0},
     {"q":"What marks the end boundary of Epoch 1 in 6529 Calendar?","answers":["Dec 2026","Dec 2027","Dec 2028"],"correct":0},
+    {"q":"How many addresses can be consolidated into one 6529 Identity?","answers":["3","2","5"],"correct":0},
     {"q":"In the 6529 calendar hierarchy,what is the smallest unit?","answers":["SZN","Year","Epoch"],"correct":0},
+    {"q":"What does NIC primarily evaluate?","answers":["Identity authenticity","Wallet balance","Voting power"],"correct":0},
     {"q":"Only one statement is TRUE about the Meme Calendar","answers":["1 PERIOD = 5 EPOCHs","1 YEAR = 5 SZN","1 ERA = 4 PERIODs"],"correct":0},
     {"q":"What TDH boost do Gradients provide?","answers":["0.10","0.05","0.01"],"correct":0}
     
@@ -84,6 +95,7 @@
   "hard": [
     {"q":"What is the supply of #8 First GM?","answers":["3941","3420","3069"],"correct":0},
     {"q":"How many cards were co-created by 6529er and Punk6529 in the first 10 SZN?","answers":["7","6","5"],"correct":0},
+    {"q":"How many Meme Cards are expected per YEAR in the 6529 calendar?","answers":["~156","~120","~169"],"correct":0},
     {"q":"How many cards are there in the first 10 SZN?","answers":["342","420","369"],"correct":0},
     {"q":"Who is the artist of the last card in SZN 1?","answers":["XCOPY","Arsonic","6529er"],"correct":0},
     {"q":"In 6529 Calendar, which card closes Epoch 1?","answers":["#594","#569","#549"],"correct":0},
