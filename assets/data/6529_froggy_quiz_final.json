@@ -53,6 +53,7 @@
 
   "medium": [
     {"q":"How many memes are there in SZN 1?","answers":["47","42","33"],"correct":0},
+    {"q":"What is unique about Meme Card #24 NFT Adoption Pathway 2030?","answers":["It is a PowerPoint slide","It is an animated GIF","It is a generative artwork"],"correct":0},
     {"q":"Where is NextGen artwork generated?","answers":["On-chain","On IPFS only","Off-chain"],"correct":0},
     {"q":"How many Meme Cards have a supply of 420 in SZN 1–10?","answers":["10","9","8"],"correct":0},
     {"q":"Who created the first Meme Card in SZN 3?","answers":["DEEKAY","Grant Riven Yun","6529er"],"correct":0},
