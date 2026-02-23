@@ -127,6 +127,50 @@ arcadeBlink(this, play);
 
 }
 
+
+
+class LoadingScene extends Phaser.Scene {
+  constructor() { super('Loading'); }
+
+  create() {
+
+    const width = this.scale.width;
+    const height = this.scale.height;
+
+    this.cameras.main.setBackgroundColor('#000');
+
+    // Texto
+    this.add.text(width / 2, height / 2 - 80, 'Loading...', {
+      fontFamily: 'Arial',
+      fontSize: '48px',
+      color: '#ffffff'
+    }).setOrigin(0.5);
+
+    // Fondo barra
+    this.add.rectangle(width / 2, height / 2, 420, 40, 0x222222)
+      .setOrigin(0.5);
+
+    // Barra progreso fake
+    const bar = this.add.rectangle(width / 2 - 200, height / 2, 0, 30, 0xffffff)
+      .setOrigin(0, 0.5);
+
+    this.tweens.add({
+      targets: bar,
+      width: 400,
+      duration: 5000,
+      ease: 'Linear'
+    });
+
+    // Esperar 5 segundos → Game
+    this.time.delayedCall(5000, () => {
+      this.scene.start('Game');
+    });
+
+  }
+}
+
+
+
 /* =========================
    GAME
 ========================= */
@@ -1127,7 +1171,7 @@ new Phaser.Game({
       : ''
   },
 
-  scene: [BootScene, TitleScene, GameScene]
+  scene: [BootScene, TitleScene, LoadingScene, GameScene]
 });
 
 
