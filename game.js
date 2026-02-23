@@ -115,7 +115,7 @@ arcadeBlink(this, play);
 
       if (this.introMusic) this.introMusic.stop();
 
-      this.scene.start('Game');
+      this.scene.start('Loading');
 
     }
   });
@@ -130,10 +130,159 @@ arcadeBlink(this, play);
 /* =========================
    GAME
 ========================= */
+
+
+class LoadingScene extends Phaser.Scene {
+  constructor() { super('Loading'); }
+
+  preload() {
+
+    const width = this.scale.width;
+    const height = this.scale.height;
+
+    this.cameras.main.setBackgroundColor('#000');
+
+    const progressBox = this.add.graphics();
+    const progressBar = this.add.graphics();
+
+    progressBox.fillStyle(0x222222, 0.8);
+    progressBox.fillRect(width / 2 - 170, height / 2 - 25, 340, 50);
+
+    const loadingText = this.add.text(width / 2, height / 2 - 60, 'Loading...', {
+      fontFamily: 'Arial',
+      fontSize: '32px',
+      color: '#ffffff'
+    }).setOrigin(0.5);
+
+    const percentText = this.add.text(width / 2, height / 2 + 40, '0%', {
+      fontFamily: 'Arial',
+      fontSize: '28px',
+      color: '#ffffff'
+    }).setOrigin(0.5);
+
+    this.load.on('progress', (value) => {
+
+      progressBar.clear();
+      progressBar.fillStyle(0xffffff, 1);
+      progressBar.fillRect(
+        width / 2 - 160,
+        height / 2 - 15,
+        320 * value,
+        30
+      );
+
+      percentText.setText(parseInt(value * 100) + '%');
+    });
+
+    this.load.on('complete', () => {
+      this.scene.start('Game');
+    });
+
+    /* ===== CARGAS DEL JUEGO ===== */
+
+    this.load.image('bgEasy', 'assets/backgrounds/easy.png');
+    this.load.image('bgMedium', 'assets/backgrounds/medium.jpg');
+    this.load.image('bgHard', 'assets/backgrounds/hard.jpg');
+    this.load.image('resultsBg', 'assets/backgrounds/gameoverbackground.png');
+
+    this.load.image('leaf', 'assets/game/leaf.png');
+    this.load.image('frog', 'assets/game/frog.png');
+    this.load.image('frogJump', 'assets/game/frog2.png');
+    this.load.image('frogFall', 'assets/game/frogfall.png');
+
+    this.load.audio('sfx_jump', 'sounds/jump.wav');
+    this.load.audio('sfx_correct', 'sounds/correct.wav');
+    this.load.audio('sfx_wrong', 'sounds/wrong.wav');
+    this.load.audio('sfx_loselife', 'sounds/loselife.wav');
+    this.load.audio('sfx_shake', 'sounds/shake.wav');
+    this.load.audio('sfx_gameover', 'sounds/gameover.wav');
+    this.load.audio('sfx_score', 'sounds/score.wav');
+    this.load.audio('sfx_finalrun', 'sounds/finalrun.wav');
+    this.load.audio('sfx_roundend', 'sounds/roundend.wav');
+    this.load.audio('music_outro', 'sounds/outro.wav');
+
+    this.load.image('questionFrame', 'assets/ui/questionFrame.png');
+    this.load.image('heart', 'assets/game/lives.png');
+    this.load.image('gameOverImage', 'assets/game/gameovergame.png');
+
+    this.load.json('questions', 'assets/data/6529_froggy_quiz_final.json');
+
+    this.load.image('end_congratulations', 'assets/end/congratulations.png');
+    this.load.image('end_perfectrun', 'assets/end/perfectrun.png');
+    this.load.image('end_playagain', 'assets/end/playagain.png');
+    this.load.image('end_silver', 'assets/end/silverfrog.png');
+    this.load.image('end_gold', 'assets/end/goldfrog.png');
+    this.load.image('end_legendary', 'assets/end/legendaryfrog.png');
+  }
+}
+
+
 class GameScene extends Phaser.Scene {
   constructor() { super('Game'); }
 
-  preload() {
+ preload() {
+
+  this.cameras.main.setBackgroundColor('#000');
+
+  const width = this.scale.width;
+  const height = this.scale.height;
+
+  let progressBar;
+  let progressBox;
+  let loadingText;
+  let percentText;
+
+  this.load.on('start', () => {
+
+    progressBox = this.add.graphics();
+    progressBar = this.add.graphics();
+
+    progressBox.fillStyle(0x222222, 0.8);
+    progressBox.fillRect(width / 2 - 170, height / 2 - 25, 340, 50);
+
+    loadingText = this.add.text(width / 2, height / 2 - 60, 'Loading...', {
+      fontFamily: 'Arial',
+      fontSize: '32px',
+      color: '#ffffff'
+    }).setOrigin(0.5);
+
+    percentText = this.add.text(width / 2, height / 2 + 40, '0%', {
+      fontFamily: 'Arial',
+      fontSize: '28px',
+      color: '#ffffff'
+    }).setOrigin(0.5);
+
+  });
+
+  this.load.on('progress', (value) => {
+
+    if (!progressBar) return;
+
+    progressBar.clear();
+    progressBar.fillStyle(0xffffff, 1);
+    progressBar.fillRect(
+      width / 2 - 160,
+      height / 2 - 15,
+      320 * value,
+      30
+    );
+
+    if (percentText) {
+      percentText.setText(parseInt(value * 100) + '%');
+    }
+
+  });
+
+  this.load.on('complete', () => {
+
+    if (progressBar) progressBar.destroy();
+    if (progressBox) progressBox.destroy();
+    if (loadingText) loadingText.destroy();
+    if (percentText) percentText.destroy();
+
+  });
+
+    
     // backgrounds
     this.load.image('bgEasy', 'assets/backgrounds/easy.png');
     this.load.image('bgMedium', 'assets/backgrounds/medium.jpg');
@@ -1127,7 +1276,7 @@ new Phaser.Game({
       : ''
   },
 
-  scene: [BootScene, TitleScene, GameScene]
+  scene: [BootScene, TitleScene, LoadingScene, GameScene]
 });
 
 
