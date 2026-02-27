@@ -12,7 +12,7 @@ class TitleScene extends Phaser.Scene {
   preload() {
     this.load.image('cover', 'assets/ui/cover.png');
     this.load.image('playBtn', 'assets/ui/play.png');
-    this.load.audio('music_intro', 'sounds/intro.mp3');
+    
 
     
   }
@@ -31,13 +31,7 @@ this.events.on('shutdown', () => {
 });
 
 
-    this.introMusic = this.sound.add('music_intro', {
-    loop: true,
-    volume: 0.6
-  });
-
-  this.introMusic.play()
-
+  
 
 
   
@@ -113,7 +107,7 @@ arcadeBlink(this, play);
     yoyo: true,
     onComplete: () => {
 
-      if (this.introMusic) this.introMusic.stop();
+     
 
       this.scene.start('Game');
 
