@@ -10,6 +10,7 @@ class TitleScene extends Phaser.Scene {
   constructor() { super('Title'); }
 
   preload() {
+    
     this.load.image('cover', 'assets/ui/cover.png');
     this.load.image('playBtn', 'assets/ui/play.png');
     
@@ -129,6 +130,31 @@ class GameScene extends Phaser.Scene {
   constructor() { super('Game'); }
 
   preload() {
+
+
+      // 🔤 texto loading
+  const loadingText = this.add.text(512, 768, 'LOADING...', {
+    fontFamily: 'Arial',
+    fontSize: '48px',
+    color: '#ffffff'
+  }).setOrigin(0.5);
+
+  // opcional: barra progreso
+  const progressBar = this.add.graphics();
+
+  this.load.on('progress', (value) => {
+    progressBar.clear();
+    progressBar.fillStyle(0xffffff, 1);
+    progressBar.fillRect(262, 820, 500 * value, 20);
+  });
+
+  this.load.on('complete', () => {
+    progressBar.destroy();
+    loadingText.destroy();
+  });
+
+  // 👇 DESPUÉS pones todas tus cargas normales
+  
     // backgrounds
     this.load.image('bgEasy', 'assets/backgrounds/easy.png');
     this.load.image('bgMedium', 'assets/backgrounds/medium.jpg');
