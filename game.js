@@ -143,16 +143,16 @@ class GameScene extends Phaser.Scene {
 
     // sounds
 
-    this.load.audio('sfx_jump', 'sounds/jump.wav');
-    this.load.audio('sfx_correct', 'sounds/correct.wav');
-    this.load.audio('sfx_wrong', 'sounds/wrong.wav');
-    this.load.audio('sfx_loselife', 'sounds/loselife.wav');
-    this.load.audio('sfx_shake', 'sounds/shake.wav');
-    this.load.audio('sfx_gameover', 'sounds/gameover.wav');
-    this.load.audio('sfx_score', 'sounds/score.wav');
-    this.load.audio('sfx_finalrun', 'sounds/finalrun.wav');
-    this.load.audio('sfx_roundend', 'sounds/roundend.wav');
-    this.load.audio('music_outro', 'sounds/outro.wav');
+this.load.audio('sfx_jump', 'sounds/jump.mp3');
+this.load.audio('sfx_correct', 'sounds/correct.mp3');
+this.load.audio('sfx_wrong', 'sounds/wrong.mp3');
+this.load.audio('sfx_loselife', 'sounds/loselife.mp3');
+this.load.audio('sfx_shake', 'sounds/shake.mp3');
+this.load.audio('sfx_gameover', 'sounds/gameover.mp3');
+this.load.audio('sfx_score', 'sounds/score.mp3');
+this.load.audio('sfx_finalrun', 'sounds/finalrun.mp3');
+this.load.audio('sfx_roundend', 'sounds/roundend.mp3');
+this.load.audio('music_outro', 'sounds/outro.mp3');
 
 
 
