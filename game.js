@@ -1,30 +1,4 @@
 /* =========================
-   TITLE SCENE
-========================= */
-class TitleScene extends Phaser.Scene {
-  constructor() { super('Title'); }
-
-  preload() {
-    this.load.image('cover', 'assets/ui/cover.png');
-    this.load.image('playBtn', 'assets/ui/play.png');
-  }
-
-  create() {
-    console.log("TitleScene loaded");  // Verificación
-    this.add.image(512, 768, 'cover').setOrigin(0.5);
-
-    const play = this.add.image(512, 1230, 'playBtn')
-      .setOrigin(0.5)
-      .setScale(1)
-      .setInteractive({ useHandCursor: true });
-
-    play.on('pointerdown', () => {
-      this.scene.start('Game');
-    });
-  }
-}
-
-/* =========================
    GAME SCENE
 ========================= */
 class GameScene extends Phaser.Scene {
@@ -56,7 +30,7 @@ class GameScene extends Phaser.Scene {
     this.row3 = [];
 
     // Ranas y letreros de nivel (inicialmente invisibles)
-    this.frog = this.add.image(512, 1360, 'froglevel1').setOrigin(0.5).setDepth(10)
+    this.frog = this.add.image(512, 1360, 'froglevel1').setOrigin(0.5).setDepth(10);
     this.levelText = this.add.image(512, 600, 'levelText').setAlpha(0);
     this.countdownText = this.add.text(512, 690, '3', { 
       fontFamily: 'Arial', 
@@ -89,7 +63,7 @@ class GameScene extends Phaser.Scene {
     // Fondo dependiendo del nivel
     this.background.setTexture('bgEasy').setScale(1);
 
-    this.frog.setTexture(levelImage).setAlpha(1);
+    this.frog.setTexture(levelImage).setAlpha(1).setScale(0.5); // Ajustamos la escala de la rana
     this.levelText.setTexture(levelText).setAlpha(1);
 
     // Cuenta regresiva
@@ -114,7 +88,8 @@ class GameScene extends Phaser.Scene {
 
   startGame() {
     this.time.delayedCall(500, () => {
-      this.scene.start('GamePlay');
+      // Cambiar la escena de forma correcta después de la cuenta regresiva
+      this.scene.start('GameScene'); // Usamos GameScene para que se mantenga el flujo
     });
   }
 
