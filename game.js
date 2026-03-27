@@ -31,7 +31,6 @@ class GameScene extends Phaser.Scene {
   constructor() { super('Game'); }
 
   preload() {
-    // Asegúrate de que las rutas sean correctas
     this.load.image('froglevel1', 'assets/ui/froglevel1.png');
     this.load.image('froglevel2', 'assets/ui/froglevel2.png');
     this.load.image('froglevel3', 'assets/ui/froglevel3.png');
@@ -50,7 +49,8 @@ class GameScene extends Phaser.Scene {
     this.timeLimit = 10000; // 10 segundos por pregunta
 
     // Fondo inicial
-    this.background = this.add.image(512, 768, 'bgEasy').setOrigin(0.5).setDepth(0);
+    this.background = this.add.image(512, 768, 'bgEasy').setOrigin(0.5).setDepth(0).setScale(1);
+
     this.row1 = [];
     this.row2 = [];
     this.row3 = [];
@@ -87,13 +87,15 @@ class GameScene extends Phaser.Scene {
     }
 
     // Fondo dependiendo del nivel
-    this.add.image(512, 768, 'bgEasy').setOrigin(0.5).setDepth(0); 
+    this.background.setTexture('bgEasy').setScale(1);
 
     this.frog.setTexture(levelImage).setAlpha(1);
     this.levelText.setTexture(levelText).setAlpha(1);
 
     // Cuenta regresiva
     let countdown = 3;
+    this.countdownText.setAlpha(1).setText(countdown);
+
     const countdownTimer = this.time.addEvent({
       delay: 1000, // Cada segundo
       callback: () => {
@@ -123,11 +125,11 @@ class GameScene extends Phaser.Scene {
 
   updateBackgroundByDifficulty() {
     if (this.currentQuestionIndex < 7) {
-      this.background.setTexture('bgEasy');
+      this.background.setTexture('bgEasy').setScale(1);
     } else if (this.currentQuestionIndex < 15) {
-      this.background.setTexture('bgMedium');
+      this.background.setTexture('bgMedium').setScale(1);
     } else {
-      this.background.setTexture('bgHard');
+      this.background.setTexture('bgHard').setScale(1);
     }
   }
 
