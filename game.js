@@ -1,142 +1,106 @@
+/* =========================
+   TITLE
+========================= */
+class TitleScene extends Phaser.Scene {
+  constructor() { super('Title'); }
+
+  preload() {
+    this.load.image('cover', 'assets/ui/cover.png');
+    this.load.image('playBtn', 'assets/ui/play.png');
+  }
+
+  create() {
+    this.add.image(512, 768, 'cover').setOrigin(0.5);
+
+    const play = this.add.image(512, 1230, 'playBtn')
+      .setOrigin(0.5)
+      .setScale(1)
+      .setInteractive({ useHandCursor: true });
+
+    play.on('pointerdown', () => {
+      this.scene.start('Game');
+    });
+  }
+}
+
+/* =========================
+   GAME
+========================= */
 class GameScene extends Phaser.Scene {
   constructor() { super('Game'); }
 
   preload() {
-    const loadingText = this.add.text(512, 768, 'LOADING...', {
-      fontFamily: 'Arial',
-      fontSize: '48px',
-      color: '#ffffff'
-    }).setOrigin(0.5);
-
-    const progressBar = this.add.graphics();
-
-    this.load.on('progress', (value) => {
-      progressBar.clear();
-      progressBar.fillStyle(0xffffff, 1);
-      progressBar.fillRect(262, 820, 500 * value, 20);
-    });
-
-    this.load.on('complete', () => {
-      progressBar.destroy();
-      loadingText.destroy();
-    });
-
-    // Cargar imágenes necesarias
-    this.load.image('bgEasy', 'assets/backgrounds/easy.png');
-    this.load.image('bgMedium', 'assets/backgrounds/medium.jpg');
-    this.load.image('bgHard', 'assets/backgrounds/hard.jpg');
     this.load.image('froglevel1', 'assets/ui/froglevel1.png');
     this.load.image('froglevel2', 'assets/ui/froglevel2.png');
     this.load.image('froglevel3', 'assets/ui/froglevel3.png');
     this.load.image('levelText', 'assets/ui/easytext.png');
     this.load.image('mediumtext', 'assets/ui/mediumtext.png');
     this.load.image('hardtext', 'assets/ui/hardtext.png');
+    this.load.image('bgEasy', 'assets/backgrounds/easy.png');
+    this.load.image('bgMedium', 'assets/backgrounds/medium.jpg');
+    this.load.image('bgHard', 'assets/backgrounds/hard.jpg');
   }
 
   create() {
-    // Mostrar pantalla de transición para Level 1 justo después de cargar
-    this.showLevelTransitionScreen('Level 1'); // Level 1
-
-    // Definir el estado y las preguntas
-    this.isResolving = false;
-    this.currentQuestionIndex = 0;
     this.lives = 4;
     this.score = 0;
+    this.currentQuestionIndex = 0;
+    this.timeLimit = 10000; // 10 seconds per question
 
-    // Inicialización de sonidos
-    this.sfxJump = this.sound.add('sfx_jump');
-    this.sfxCorrect = this.sound.add('sfx_correct');
-    this.sfxWrong = this.sound.add('sfx_wrong');
-
-    // Preguntas y dificultad
-    this.timeLimit = 10000; // 10 segundos
-    this.fastThreshold = 5000; // 5 segundos
-    const data = this.cache.json.get('questions');
-    const easy = Phaser.Utils.Array.Shuffle(data.easy).slice(0, 7);
-    const medium = Phaser.Utils.Array.Shuffle(data.medium).slice(0, 8);
-    const hard = Phaser.Utils.Array.Shuffle(data.hard).slice(0, 5);
-    this.questions = [...easy, ...medium, ...hard];
-
-    // Fondo y hojas
+    // Fondo inicial
     this.background = this.add.image(512, 768, 'bgEasy').setOrigin(0.5).setDepth(0);
-    this.row1 = [this.add.image(210, 1186, 'leaf'), this.add.image(512, 1040, 'leaf'), this.add.image(814, 1186, 'leaf')];
+    this.row1 = [];
+    this.row2 = [];
+    this.row3 = [];
 
-    // Mostrar las preguntas
+    // Ranas y letreros de nivel (inicialmente invisibles)
+    this.frog = this.add.image(512, 1360, 'froglevel1').setOrigin(0.5).setDepth(10);
+    this.levelText = this.add.image(512, 600, 'levelText').setAlpha(0);
+    this.countdownText = this.add.text(512, 690, '3', { 
+      fontFamily: 'Arial', 
+      fontSize: '120px', 
+      color: '#ffd700', 
+      stroke: '#000000', 
+      strokeThickness: 4 
+    }).setOrigin(0.5).setAlpha(0);
+
+    // Animación de la pantalla de nivel 1
+    this.showLevelScreen(1); // Muestra la pantalla de nivel 1
+
+    // Cargar la siguiente pregunta o continuar el flujo del juego
     this.loadQuestion();
   }
 
-  loadQuestion() {
-    // Cuando se pasa a la siguiente dificultad, mostrar la transición de nivel
-    if (this.currentQuestionIndex === 7) {
-      this.showLevelTransitionScreen('Level 2'); // Se pasa al nivel 2 después de la pregunta 7
-      this.background.setTexture('bgMedium'); // Cambiar fondo a medium
-    } else if (this.currentQuestionIndex === 15) {
-      this.showLevelTransitionScreen('Level 3'); // Se pasa al nivel 3 después de la pregunta 15
-      this.background.setTexture('bgHard'); // Cambiar fondo a hard
+  showLevelScreen(level) {
+    let levelText, levelImage;
+    if (level === 1) {
+      levelText = 'LEVEL 1';
+      levelImage = 'froglevel1';
+    } else if (level === 2) {
+      levelText = 'LEVEL 2';
+      levelImage = 'froglevel2';
+    } else if (level === 3) {
+      levelText = 'LEVEL 3';
+      levelImage = 'froglevel3';
     }
 
-    // Actualizar el texto y la pregunta
-    const question = this.questions[this.currentQuestionIndex];
-    this.add.text(512, 200, question.q, {
-      fontFamily: 'Arial',
-      fontSize: '48px',
-      color: '#ffffff'
-    }).setOrigin(0.5);
-  }
+    // Configuración para la animación de la pantalla de nivel
+    this.add.image(512, 768, 'bgEasy').setOrigin(0.5).setDepth(0);  // Fondo dependiendo del nivel
 
-  // Función para mostrar la pantalla de transición entre niveles con cuenta regresiva
-  showLevelTransitionScreen(level) {
-    let frogSprite, levelTextSprite;
-    if (level === 'Level 2') {
-      frogSprite = 'froglevel2';
-      levelTextSprite = 'mediumtext';
-    } else if (level === 'Level 3') {
-      frogSprite = 'froglevel3';
-      levelTextSprite = 'hardtext';
-    } else {
-      frogSprite = 'froglevel1';
-      levelTextSprite = 'levelText';
-    }
+    this.frog.setTexture(levelImage).setAlpha(1);
+    this.levelText.setTexture(levelText).setAlpha(1);
 
-    const frog = this.add.sprite(512, 700, frogSprite).setScale(0.5);
-    const levelText = this.add.sprite(512, 600, levelTextSprite).setAlpha(0);
-    const countdownText = this.add.text(512, 690, '3', {
-      fontFamily: 'Arial',
-      fontSize: '120px',
-      color: '#ffd700',
-      stroke: '#000000',
-      strokeThickness: 4
-    }).setOrigin(0.5);
-
-    countdownText.setRotation(Phaser.Math.DegToRad(45));  // Rotar la cuenta regresiva 45 grados
-
-    this.tweens.add({
-      targets: frog,
-      y: 500,
-      scale: 1,
-      duration: 1000,
-      ease: 'Bounce.easeOut'
-    });
-
-    this.tweens.add({
-      targets: levelText,
-      alpha: 1,
-      duration: 1000,
-      ease: 'Power2'
-    });
-
+    // Cuenta regresiva
     let countdown = 3;
     const countdownTimer = this.time.addEvent({
-      delay: 1000,
+      delay: 1000, // Cada segundo
       callback: () => {
         countdown--;
-        countdownText.setText(countdown);
+        this.countdownText.setText(countdown);
         if (countdown === 0) {
+          this.countdownText.setAlpha(0);
           this.time.delayedCall(500, () => {
-            frog.destroy();
-            levelText.destroy();
-            countdownText.destroy();
-            this.loadQuestion();  // Continuar con la siguiente pregunta
+            this.startGame();
           });
         }
       },
@@ -144,20 +108,52 @@ class GameScene extends Phaser.Scene {
     });
   }
 
+  startGame() {
+    this.time.delayedCall(500, () => {
+      this.scene.start('GamePlay');
+    });
+  }
+
+  loadQuestion() {
+    // Lógica para cargar preguntas y manejar el flujo del juego
+    this.updateBackgroundByDifficulty();
+
+    // Aquí se añade la lógica de preguntas y respuestas...
+  }
+
+  updateBackgroundByDifficulty() {
+    if (this.currentQuestionIndex < 7) {
+      this.background.setTexture('bgEasy');
+    } else if (this.currentQuestionIndex < 15) {
+      this.background.setTexture('bgMedium');
+    } else {
+      this.background.setTexture('bgHard');
+    }
+  }
+
   update() {
-    // Actualizar HUD, tiempo y demás...
+    // Actualización continua de la escena, como temporizadores o animaciones si es necesario.
   }
 }
 
+/* =========================
+   CONFIG
+========================= */
 new Phaser.Game({
   type: Phaser.AUTO,
   width: 1024,
   height: 1536,
   parent: 'game',
   backgroundColor: '#000',
+
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH
   },
-  scene: [BootScene, TitleScene, GameScene]  // Asegurándonos de que la escena de Título esté incluida
+
+  loader: {
+    baseURL: window.location.hostname.includes('github.io') ? '/memejumper/' : ''
+  },
+
+  scene: [BootScene, TitleScene, GameScene]
 });
