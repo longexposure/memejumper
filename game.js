@@ -25,6 +25,8 @@ class BootScene extends Phaser.Scene {
     this.load.on('complete', () => {
       progressBar.destroy();
       loadingText.destroy();
+      // Después de la carga de recursos, pasamos a la TitleScene
+      this.scene.start('Title');
     });
 
     // Carga tus imágenes y sonidos aquí
@@ -50,8 +52,7 @@ class BootScene extends Phaser.Scene {
   }
 
   create() {
-    // Después de la carga, pasamos a la TitleScene
-    this.scene.start('Title');
+    // La transición ya se maneja en `this.load.on('complete')`, por lo que esta parte se maneja automáticamente.
   }
 }
 
@@ -261,7 +262,7 @@ class GameScene3 extends Phaser.Scene {
     console.log('Juego de nivel 3 iniciado');
 
     // Aquí se inicia la lógica del juego para el nivel 3...
-    // Después de terminar, se puede terminar el juego o mostrar un mensaje final
+    // Después de terminar, se puede finalizar el juego o mostrar un mensaje final
     this.time.delayedCall(3000, () => {
       console.log('Juego completado');
       // Aquí puedes finalizar el juego o mostrar una pantalla de resultados.
