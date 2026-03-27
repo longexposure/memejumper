@@ -2,7 +2,26 @@ class GameScene extends Phaser.Scene {
   constructor() { super('Game'); }
 
   preload() {
-    // Cargar las imágenes necesarias
+    const loadingText = this.add.text(512, 768, 'LOADING...', {
+      fontFamily: 'Arial',
+      fontSize: '48px',
+      color: '#ffffff'
+    }).setOrigin(0.5);
+
+    const progressBar = this.add.graphics();
+
+    this.load.on('progress', (value) => {
+      progressBar.clear();
+      progressBar.fillStyle(0xffffff, 1);
+      progressBar.fillRect(262, 820, 500 * value, 20);
+    });
+
+    this.load.on('complete', () => {
+      progressBar.destroy();
+      loadingText.destroy();
+    });
+
+    // Cargar imágenes necesarias
     this.load.image('bgEasy', 'assets/backgrounds/easy.png');
     this.load.image('bgMedium', 'assets/backgrounds/medium.jpg');
     this.load.image('bgHard', 'assets/backgrounds/hard.jpg');
@@ -15,6 +34,9 @@ class GameScene extends Phaser.Scene {
   }
 
   create() {
+    // Mostrar pantalla de transición para Level 1 justo después de cargar
+    this.showLevelTransitionScreen('Level 1');
+
     // Definir el estado y las preguntas
     this.isResolving = false;
     this.currentQuestionIndex = 0;
