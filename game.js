@@ -29,10 +29,10 @@ class BootScene extends Phaser.Scene {
       this.scene.start('Title');
     });
 
-    // Carga tus imágenes y sonidos aquí
+    // Cargar recursos necesarios
     this.load.image('cover', 'assets/ui/cover.png'); // Imagen de inicio
     this.load.image('playBtn', 'assets/ui/play.png'); // Botón de Play
-    this.load.image('startScreen', 'assets/ui/startScreen.png'); // Imagen de pantalla de inicio
+    this.load.image('startScreen', 'assets/ui/startScreen.png'); // Imagen de inicio
     this.load.image('level1', 'assets/ui/level1.png');
     this.load.image('level2', 'assets/ui/level2.png');
     this.load.image('level3', 'assets/ui/level3.png');
@@ -65,23 +65,22 @@ class TitleScene extends Phaser.Scene {
   }
 
   preload() {
-    // Cargar la pantalla de inicio (cover) y botón Play
-    this.load.image('startScreen', 'assets/ui/startScreen.png');
+    this.load.image('startScreen', 'assets/ui/startScreen.png'); // Cargar imagen de inicio
+    this.load.image('playBtn', 'assets/ui/play.png'); // Cargar botón Play
   }
 
   create() {
     // Mostrar imagen de inicio
     this.add.image(512, 768, 'startScreen').setOrigin(0.5);
 
-    // Agregar texto "Play" para interactuar
+    // Crear el botón "Play"
     const play = this.add.image(512, 1230, 'playBtn')
       .setOrigin(0.5)
       .setInteractive({ useHandCursor: true })
       .setScale(1);
 
     play.on('pointerdown', () => {
-      // Al hacer clic en el botón de "Play", iniciar el nivel 1
-      this.scene.start('Level1Scene');
+      this.scene.start('Level1Scene'); // Al hacer clic en "Play", pasa al nivel 1
     });
   }
 }
@@ -96,9 +95,11 @@ class Level1Scene extends Phaser.Scene {
 
   preload() {
     this.load.image('level1', 'assets/ui/level1.png'); // Cargar imagen del nivel 1
+    this.load.image('bgEasy', 'assets/backgrounds/easy.png'); // Fondo de nivel 1
   }
 
   create() {
+    this.add.image(512, 768, 'bgEasy').setOrigin(0.5); // Fondo de la escena
     this.add.image(512, 768, 'level1').setOrigin(0.5); // Mostrar imagen de nivel 1
 
     const countdownText = this.add.text(512, 690, '3', {
@@ -157,9 +158,11 @@ class Level2Scene extends Phaser.Scene {
 
   preload() {
     this.load.image('level2', 'assets/ui/level2.png'); // Cargar imagen del nivel 2
+    this.load.image('bgMedium', 'assets/backgrounds/medium.jpg'); // Fondo de nivel 2
   }
 
   create() {
+    this.add.image(512, 768, 'bgMedium').setOrigin(0.5); // Fondo de la escena
     this.add.image(512, 768, 'level2').setOrigin(0.5); // Mostrar imagen de nivel 2
 
     const countdownText = this.add.text(512, 690, '3', {
@@ -218,9 +221,11 @@ class Level3Scene extends Phaser.Scene {
 
   preload() {
     this.load.image('level3', 'assets/ui/level3.png'); // Cargar imagen del nivel 3
+    this.load.image('bgHard', 'assets/backgrounds/hard.jpg'); // Fondo de nivel 3
   }
 
   create() {
+    this.add.image(512, 768, 'bgHard').setOrigin(0.5); // Fondo de la escena
     this.add.image(512, 768, 'level3').setOrigin(0.5); // Mostrar imagen de nivel 3
 
     const countdownText = this.add.text(512, 690, '3', {
