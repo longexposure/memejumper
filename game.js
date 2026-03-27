@@ -56,7 +56,7 @@ class GameScene extends Phaser.Scene {
     this.row3 = [];
 
     // Ranas y letreros de nivel (inicialmente invisibles)
-    this.frog = this.add.image(512, 1360, 'froglevel1').setOrigin(0.5).setDepth(10).setScale(0.5);
+    this.frog = this.add.image(512, 1360, 'froglevel1').setOrigin(0.5).setDepth(10)
     this.levelText = this.add.image(512, 600, 'levelText').setAlpha(0);
     this.countdownText = this.add.text(512, 690, '3', { 
       fontFamily: 'Arial', 
