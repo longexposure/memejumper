@@ -28,9 +28,9 @@ class BootScene extends Phaser.Scene {
     });
 
     // Carga tus imágenes y sonidos aquí
-    this.load.image('cover', 'assets/ui/cover.png');
-    this.load.image('playBtn', 'assets/ui/play.png');
-    this.load.image('startScreen', 'assets/ui/startScreen.png');
+    this.load.image('cover', 'assets/ui/cover.png'); // Imagen de inicio
+    this.load.image('playBtn', 'assets/ui/play.png'); // Botón de Play
+    this.load.image('startScreen', 'assets/ui/startScreen.png'); // Imagen de pantalla de inicio
     this.load.image('level1', 'assets/ui/level1.png');
     this.load.image('level2', 'assets/ui/level2.png');
     this.load.image('level3', 'assets/ui/level3.png');
@@ -64,21 +64,23 @@ class TitleScene extends Phaser.Scene {
   }
 
   preload() {
+    // Cargar la pantalla de inicio (cover) y botón Play
     this.load.image('startScreen', 'assets/ui/startScreen.png');
   }
 
   create() {
+    // Mostrar imagen de inicio
     this.add.image(512, 768, 'startScreen').setOrigin(0.5);
 
     // Agregar texto "Play" para interactuar
-    const play = this.add.text(512, 1230, 'Play', {
-      fontSize: '32px',
-      color: '#ffffff',
-      fontFamily: 'Arial'
-    }).setOrigin(0.5).setInteractive();
+    const play = this.add.image(512, 1230, 'playBtn')
+      .setOrigin(0.5)
+      .setInteractive({ useHandCursor: true })
+      .setScale(1);
 
     play.on('pointerdown', () => {
-      this.scene.start('Level1Scene'); // Iniciar al primer nivel
+      // Al hacer clic en el botón de "Play", iniciar el nivel 1
+      this.scene.start('Level1Scene');
     });
   }
 }
