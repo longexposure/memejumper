@@ -5,6 +5,7 @@ class GameScene extends Phaser.Scene {
   constructor() { super('Game'); }
 
   preload() {
+    console.log('Preloading GameScene');
     this.load.image('froglevel1', 'assets/ui/froglevel1.png');
     this.load.image('froglevel2', 'assets/ui/froglevel2.png');
     this.load.image('froglevel3', 'assets/ui/froglevel3.png');
@@ -17,6 +18,7 @@ class GameScene extends Phaser.Scene {
   }
 
   create() {
+    console.log('GameScene created');
     this.lives = 4;
     this.score = 0;
     this.currentQuestionIndex = 0;
@@ -87,6 +89,7 @@ class GameScene extends Phaser.Scene {
   }
 
   startGame() {
+    console.log('Starting the game...');
     this.time.delayedCall(500, () => {
       // Cambiar la escena de forma correcta después de la cuenta regresiva
       this.scene.start('GameScene'); // Usamos GameScene para que se mantenga el flujo
@@ -94,6 +97,7 @@ class GameScene extends Phaser.Scene {
   }
 
   loadQuestion() {
+    console.log('Loading question...');
     // Lógica para cargar preguntas y manejar el flujo del juego
     this.updateBackgroundByDifficulty();
   }
