@@ -80,7 +80,7 @@ class TitleScene extends Phaser.Scene {
       .setScale(1);
 
     play.on('pointerdown', () => {
-      this.scene.start('Level1Scene'); // Al hacer clic en "Play", pasa al nivel 1
+      this.scene.switch('Level1Scene'); // Al hacer clic en "Play", pasa al nivel 1
     });
   }
 }
@@ -120,7 +120,7 @@ class Level1Scene extends Phaser.Scene {
         if (countdown === 0) {
           countdownText.setAlpha(0);
           this.time.delayedCall(500, () => {
-            this.scene.start('GameScene1'); // Iniciar el juego del nivel 1
+            this.scene.switch('GameScene1'); // Iniciar el juego del nivel 1
           });
         }
       },
@@ -143,7 +143,7 @@ class GameScene1 extends Phaser.Scene {
     // Aquí se inicia la lógica del juego para el nivel 1...
     // Cuando termine, pasar al siguiente nivel (Level2Scene)
     this.time.delayedCall(3000, () => {
-      this.scene.start('Level2Scene'); // Cambiar a la pantalla de nivel 2
+      this.scene.switch('Level2Scene'); // Cambiar a la pantalla de nivel 2
     });
   }
 }
@@ -183,7 +183,7 @@ class Level2Scene extends Phaser.Scene {
         if (countdown === 0) {
           countdownText.setAlpha(0);
           this.time.delayedCall(500, () => {
-            this.scene.start('GameScene2'); // Iniciar el juego del nivel 2
+            this.scene.switch('GameScene2'); // Iniciar el juego del nivel 2
           });
         }
       },
@@ -206,7 +206,7 @@ class GameScene2 extends Phaser.Scene {
     // Aquí se inicia la lógica del juego para el nivel 2...
     // Cuando termine, pasar al siguiente nivel (Level3Scene)
     this.time.delayedCall(3000, () => {
-      this.scene.start('Level3Scene'); // Cambiar a la pantalla de nivel 3
+      this.scene.switch('Level3Scene'); // Cambiar a la pantalla de nivel 3
     });
   }
 }
@@ -246,7 +246,7 @@ class Level3Scene extends Phaser.Scene {
         if (countdown === 0) {
           countdownText.setAlpha(0);
           this.time.delayedCall(500, () => {
-            this.scene.start('GameScene3'); // Iniciar el juego del nivel 3
+            this.scene.switch('GameScene3'); // Iniciar el juego del nivel 3
           });
         }
       },
