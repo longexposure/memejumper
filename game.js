@@ -357,21 +357,21 @@ class GameScene extends Phaser.Scene {
     // Posición del contador dentro del cartel
     // Ajuste inicial pensado para la imagen que has enseñado
     let countdownX = 255;
-    let countdownY = 650;
+    let countdownY = 670;
     let countdownAngle = -12;
 
     // Si luego quieres, aquí puedes afinar por pantalla
     if (levelKey === 'level1Screen') {
       countdownX = 255;
-      countdownY = 650;
+      countdownY = 670;
       countdownAngle = -12;
     } else if (levelKey === 'level2Screen') {
       countdownX = 255;
-      countdownY = 650;
+      countdownY = 670;
       countdownAngle = -12;
     } else if (levelKey === 'level3Screen') {
       countdownX = 255;
-      countdownY = 650;
+      countdownY = 670;
       countdownAngle = -12;
     }
 
