@@ -366,19 +366,18 @@ class GameScene extends Phaser.Scene {
       });
     };
 
+    // 🔊 suena SOLO una vez porque el audio ya contiene toda la cuenta atrás
     this.sound.play('sfx_countdown', { volume: 0.9 });
     pulseCountdown();
 
     this.time.delayedCall(1000, () => {
       count = 2;
       countdownText.setText(String(count));
-      this.sound.play('sfx_countdown', { volume: 0.9 });
       pulseCountdown();
 
       this.time.delayedCall(1000, () => {
         count = 1;
         countdownText.setText(String(count));
-        this.sound.play('sfx_countdown', { volume: 0.9 });
         pulseCountdown();
 
         this.time.delayedCall(1000, () => {
