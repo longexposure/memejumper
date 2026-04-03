@@ -333,7 +333,7 @@ class GameScene extends Phaser.Scene {
     }
   }
 
-  /* =========================
+   /* =========================
      PANTALLA CAMBIO DE NIVEL
   ========================= */
   showLevelTransition(levelKey, onComplete) {
@@ -354,16 +354,39 @@ class GameScene extends Phaser.Scene {
       .setDepth(1001)
       .setAlpha(0);
 
-    const countdownText = this.add.text(512, 1320, '3', {
-      fontFamily: 'Arial',
-      fontSize: '140px',
-      color: '#ffffff',
-      stroke: '#000000',
-      strokeThickness: 8
+    // Posición del contador dentro del cartel
+    // Ajuste inicial pensado para la imagen que has enseñado
+    let countdownX = 255;
+    let countdownY = 680;
+    let countdownAngle = -12;
+
+    // Si luego quieres, aquí puedes afinar por pantalla
+    if (levelKey === 'level1Screen') {
+      countdownX = 255;
+      countdownY = 680;
+      countdownAngle = -12;
+    } else if (levelKey === 'level2Screen') {
+      countdownX = 255;
+      countdownY = 680;
+      countdownAngle = -12;
+    } else if (levelKey === 'level3Screen') {
+      countdownX = 255;
+      countdownY = 680;
+      countdownAngle = -12;
+    }
+
+    const countdownText = this.add.text(countdownX, countdownY, '3', {
+      fontFamily: 'Arial Black',
+      fontSize: '120px',
+      color: '#ff2a2a',
+      stroke: '#ffffff',
+      strokeThickness: 10,
+      align: 'center'
     })
       .setOrigin(0.5)
       .setDepth(1002)
-      .setAlpha(0);
+      .setAlpha(0)
+      .setAngle(countdownAngle);
 
     this.tweens.add({
       targets: [levelImage, countdownText],
@@ -377,6 +400,8 @@ class GameScene extends Phaser.Scene {
 
     const pulseCountdown = () => {
       countdownText.setScale(1);
+      countdownText.setAngle(countdownAngle);
+
       this.tweens.add({
         targets: countdownText,
         scale: 1.12,
