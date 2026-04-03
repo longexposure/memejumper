@@ -313,20 +313,20 @@ class GameScene extends Phaser.Scene {
       .setAlpha(0);
 
     let countdownX = 255;
-    let countdownY = 645;
+    let countdownY = 665;
     let countdownAngle = -12;
 
     if (levelKey === 'level1Screen') {
       countdownX = 255;
-      countdownY = 645;
+      countdownY = 665;
       countdownAngle = -12;
     } else if (levelKey === 'level2Screen') {
       countdownX = 255;
-      countdownY = 645;
+      countdownY = 665;
       countdownAngle = -12;
     } else if (levelKey === 'level3Screen') {
       countdownX = 255;
-      countdownY = 645;
+      countdownY = 665;
       countdownAngle = -12;
     }
 
