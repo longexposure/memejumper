@@ -353,8 +353,8 @@ class GameScene extends Phaser.Scene {
     let count = 3;
     countdownText.setText(String(count));
 
-    const STEP_TIME = 800;
-    const AUDIO_DELAY = 220;
+    const STEP_TIME = 700;
+    const AUDIO_DELAY = 350;
 
     const pulseCountdown = () => {
       countdownText.setScale(1);
