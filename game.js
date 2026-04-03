@@ -353,6 +353,9 @@ class GameScene extends Phaser.Scene {
     let count = 3;
     countdownText.setText(String(count));
 
+    const STEP_TIME = 850;
+    const AUDIO_DELAY = 150;
+
     const pulseCountdown = () => {
       countdownText.setScale(1);
       countdownText.setAngle(countdownAngle);
@@ -366,21 +369,23 @@ class GameScene extends Phaser.Scene {
       });
     };
 
-    // 🔊 suena SOLO una vez porque el audio ya contiene toda la cuenta atrás
-    this.sound.play('sfx_countdown', { volume: 0.9 });
     pulseCountdown();
 
-    this.time.delayedCall(1000, () => {
+    this.time.delayedCall(AUDIO_DELAY, () => {
+      this.sound.play('sfx_countdown', { volume: 0.9 });
+    });
+
+    this.time.delayedCall(STEP_TIME, () => {
       count = 2;
       countdownText.setText(String(count));
       pulseCountdown();
 
-      this.time.delayedCall(1000, () => {
+      this.time.delayedCall(STEP_TIME, () => {
         count = 1;
         countdownText.setText(String(count));
         pulseCountdown();
 
-        this.time.delayedCall(1000, () => {
+        this.time.delayedCall(STEP_TIME, () => {
           this.tweens.add({
             targets: [overlay, levelImage, countdownText],
             alpha: 0,
