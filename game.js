@@ -18,7 +18,6 @@ class TitleScene extends Phaser.Scene {
     this.input.once('pointerdown', () => {
       this.sound.unlock();
 
-      // 🔊 detener música automáticamente al salir o reiniciar escena
       this.events.on('shutdown', () => {
         if (this.outroMusic && this.outroMusic.isPlaying) {
           this.outroMusic.stop();
@@ -51,7 +50,6 @@ class TitleScene extends Phaser.Scene {
 
     arcadeBlink(this, play);
 
-    // 🎯 micro golpe periódico
     this.time.addEvent({
       delay: 2000,
       loop: true,
@@ -66,7 +64,6 @@ class TitleScene extends Phaser.Scene {
       }
     });
 
-    // 🖱️ hover
     play.on('pointerover', () => {
       play.visible = true;
       play.setScale(1.08);
@@ -77,7 +74,6 @@ class TitleScene extends Phaser.Scene {
       play.setScale(1);
     });
 
-    // 👇 click impacto
     play.on('pointerdown', () => {
       play.visible = true;
 
@@ -101,14 +97,12 @@ class GameScene extends Phaser.Scene {
   constructor() { super('Game'); }
 
   preload() {
-    // 🔤 texto loading
     const loadingText = this.add.text(512, 768, 'LOADING...', {
       fontFamily: 'Arial',
       fontSize: '48px',
       color: '#ffffff'
     }).setOrigin(0.5);
 
-    // opcional: barra progreso
     const progressBar = this.add.graphics();
 
     this.load.on('progress', (value) => {
@@ -150,18 +144,19 @@ class GameScene extends Phaser.Scene {
     this.load.audio('sfx_finalrun', 'sounds/finalrun.mp3');
     this.load.audio('sfx_roundend', 'sounds/roundend.mp3');
     this.load.audio('music_outro', 'sounds/outro.mp3');
+    this.load.audio('sfx_countdown', 'sounds/countdown.mp3');
 
     // UI
     this.load.image('questionFrame', 'assets/ui/questionFrame.png');
     this.load.image('heart', 'assets/game/lives.png');
 
-    // game over screen image
+    // game over
     this.load.image('gameOverImage', 'assets/game/gameovergame.png');
 
     // JSON
     this.load.json('questions', 'assets/data/6529_froggy_quiz_final.json');
 
-    // END
+    // end
     this.load.image('end_congratulations', 'assets/end/congratulations.png');
     this.load.image('end_perfectrun', 'assets/end/perfectrun.png');
     this.load.image('end_playagain', 'assets/end/playagain.png');
@@ -173,9 +168,6 @@ class GameScene extends Phaser.Scene {
   create() {
     this.sound.unlock();
 
-    /* =========================
-       ESTADO
-    ========================= */
     this.isResolving = false;
     this.currentQuestionIndex = 0;
 
@@ -200,11 +192,7 @@ class GameScene extends Phaser.Scene {
     this.timeLimit = 10000;
     this.fastThreshold = 5000;
 
-    /* =========================
-       PREGUNTAS (7/8/5)
-    ========================= */
     const data = this.cache.json.get('questions');
-
     const pick = (arr, n) => Phaser.Utils.Array.Shuffle([...arr]).slice(0, n);
 
     const easy = pick(data.easy, 7);
@@ -213,16 +201,10 @@ class GameScene extends Phaser.Scene {
 
     this.questions = [...easy, ...medium, ...hard];
 
-    /* =========================
-       FONDO
-    ========================= */
     this.background = this.add.image(512, 768, 'bgEasy')
       .setOrigin(0.5)
       .setDepth(0);
 
-    /* =========================
-       POSICIONES HOJAS
-    ========================= */
     this.POS1 = [{ x: 210, y: 1186 }, { x: 512, y: 1040 }, { x: 814, y: 1186 }];
     this.POS2 = [{ x: 210, y: 880 }, { x: 512, y: 730 }, { x: 814, y: 880 }];
     this.POS3 = [{ x: 210, y: 580 }, { x: 512, y: 420 }, { x: 814, y: 580 }];
@@ -232,16 +214,10 @@ class GameScene extends Phaser.Scene {
     this.row1 = this.POS1.map(p => this.add.image(p.x, p.y, 'leaf').setOrigin(0.5));
     this.leafStart = this.add.image(512, 1410, 'leaf').setOrigin(0.5);
 
-    /* =========================
-       RANA
-    ========================= */
     this.frog = this.add.image(512, 1360, 'frog')
       .setOrigin(0.5)
       .setDepth(10);
 
-    /* =========================
-       PREGUNTA
-    ========================= */
     this.add.image(512, 188, 'questionFrame').setOrigin(0.5);
 
     this.questionText = this.add.text(512, 200, '', {
@@ -252,9 +228,6 @@ class GameScene extends Phaser.Scene {
       wordWrap: { width: 820 }
     }).setOrigin(0.5);
 
-    /* =========================
-       VIDAS
-    ========================= */
     this.heartIcon = this.add.image(40, 40, 'heart')
       .setOrigin(0.5)
       .setScale(0.6)
@@ -266,18 +239,12 @@ class GameScene extends Phaser.Scene {
       color: '#ffffff'
     }).setOrigin(0, 0.5).setDepth(20);
 
-    /* =========================
-       SCORE HUD
-    ========================= */
     this.scoreText = this.add.text(980, 20, this.score, {
       fontFamily: 'Arial',
       fontSize: '38px',
       color: '#ffffff'
     }).setOrigin(1, 0);
 
-    /* =========================
-       TEMPORIZADOR HUD
-    ========================= */
     this.timerText = this.add.text(41, 1505, '10', {
       fontFamily: 'Arial',
       fontSize: '34px',
@@ -289,18 +256,12 @@ class GameScene extends Phaser.Scene {
     this.timerCircleY = 1488;
     this.timerCircleRadius = 30;
 
-    /* =========================
-       CONTADOR DE PREGUNTA
-    ========================= */
     this.questionCounterText = this.add.text(980, 1520, '1 / 20', {
       fontFamily: 'Arial',
       fontSize: '34px',
       color: '#ffffff'
     }).setOrigin(1, 1).setDepth(20);
 
-    /* =========================
-       RESPUESTAS
-    ========================= */
     this.answers = this.row1.map(l =>
       this.add.text(l.x, l.y - 20, '', {
         fontFamily: 'Arial',
@@ -320,9 +281,6 @@ class GameScene extends Phaser.Scene {
     });
   }
 
-  /* =========================
-     BACKGROUND POR DIFICULTAD
-  ========================= */
   updateBackgroundByDifficulty() {
     if (this.currentQuestionIndex < 7) {
       this.background.setTexture('bgEasy');
@@ -333,7 +291,7 @@ class GameScene extends Phaser.Scene {
     }
   }
 
-   /* =========================
+  /* =========================
      PANTALLA CAMBIO DE NIVEL
   ========================= */
   showLevelTransition(levelKey, onComplete) {
@@ -354,24 +312,21 @@ class GameScene extends Phaser.Scene {
       .setDepth(1001)
       .setAlpha(0);
 
-    // Posición del contador dentro del cartel
-    // Ajuste inicial pensado para la imagen que has enseñado
     let countdownX = 255;
-    let countdownY = 680;
+    let countdownY = 685;
     let countdownAngle = -12;
 
-    // Si luego quieres, aquí puedes afinar por pantalla
     if (levelKey === 'level1Screen') {
       countdownX = 255;
-      countdownY = 680;
+      countdownY = 685;
       countdownAngle = -12;
     } else if (levelKey === 'level2Screen') {
       countdownX = 255;
-      countdownY = 680;
+      countdownY = 685;
       countdownAngle = -12;
     } else if (levelKey === 'level3Screen') {
       countdownX = 255;
-      countdownY = 680;
+      countdownY = 685;
       countdownAngle = -12;
     }
 
@@ -398,6 +353,9 @@ class GameScene extends Phaser.Scene {
     let count = 3;
     countdownText.setText(String(count));
 
+    const STEP_TIME = 650;
+    const AUDIO_DELAY = 420;
+
     const pulseCountdown = () => {
       countdownText.setScale(1);
       countdownText.setAngle(countdownAngle);
@@ -413,17 +371,21 @@ class GameScene extends Phaser.Scene {
 
     pulseCountdown();
 
-    this.time.delayedCall(1000, () => {
+    this.time.delayedCall(AUDIO_DELAY, () => {
+      this.sound.play('sfx_countdown', { volume: 0.9 });
+    });
+
+    this.time.delayedCall(STEP_TIME, () => {
       count = 2;
       countdownText.setText(String(count));
       pulseCountdown();
 
-      this.time.delayedCall(1000, () => {
+      this.time.delayedCall(STEP_TIME, () => {
         count = 1;
         countdownText.setText(String(count));
         pulseCountdown();
 
-        this.time.delayedCall(1000, () => {
+        this.time.delayedCall(STEP_TIME, () => {
           this.tweens.add({
             targets: [overlay, levelImage, countdownText],
             alpha: 0,
@@ -446,9 +408,6 @@ class GameScene extends Phaser.Scene {
     });
   }
 
-  /* =========================
-     TRANSICIÓN SI CAMBIA NIVEL
-  ========================= */
   goToNextStepAfterAnswer() {
     if (this.currentQuestionIndex >= this.questions.length) {
       if (this.lives > 0) {
@@ -479,9 +438,6 @@ class GameScene extends Phaser.Scene {
     this.enableRow1();
   }
 
-  /* =========================
-     TIMER HUD
-  ========================= */
   updateTimerHUD() {
     if (this.isResolving) return;
     if (!this.questionStartTime) return;
@@ -514,9 +470,6 @@ class GameScene extends Phaser.Scene {
     this.timerCircle.strokePath();
   }
 
-  /* =========================
-     CARGAR PREGUNTA
-  ========================= */
   loadQuestion() {
     if (this.currentQuestionIndex >= this.questions.length) {
       this.questionText.setText('END OF DEMO');
@@ -565,9 +518,6 @@ class GameScene extends Phaser.Scene {
     this.updateTimerHUD();
   }
 
-  /* =========================
-     INTERACCIÓN
-  ========================= */
   enableLeaf(leaf, i) {
     leaf.removeAllListeners();
     leaf.setInteractive({ useHandCursor: true });
@@ -598,9 +548,6 @@ class GameScene extends Phaser.Scene {
     this.jumpToLeaf(leaf, i === this.correctIndex);
   }
 
-  /* =========================
-     SALTO
-  ========================= */
   jumpToLeaf(leaf, correct) {
     this.frog.setTexture('frogJump').setScale(0.35);
     if (this.sfxJump) this.sfxJump.play();
@@ -618,9 +565,6 @@ class GameScene extends Phaser.Scene {
     });
   }
 
-  /* =========================
-     ACIERTO
-  ========================= */
   handleCorrect() {
     if (this.questionTimer) this.questionTimer.remove(false);
 
@@ -631,7 +575,6 @@ class GameScene extends Phaser.Scene {
     const responseTime = this.time.now - this.questionStartTime;
 
     let points;
-
     if (responseTime <= 3000) {
       points = 3000;
     } else if (responseTime <= 6000) {
@@ -687,9 +630,6 @@ class GameScene extends Phaser.Scene {
     });
   }
 
-  /* =========================
-     FALLO
-  ========================= */
   handleWrong(leaf) {
     if (this.questionTimer) this.questionTimer.remove(false);
 
@@ -765,9 +705,6 @@ class GameScene extends Phaser.Scene {
     });
   }
 
-  /* =========================
-     FINAL RUN
-  ========================= */
   playFinalRun() {
     this.disableRow1();
     this.isResolving = true;
@@ -820,9 +757,6 @@ class GameScene extends Phaser.Scene {
     });
   }
 
-  /* =========================
-     VIDAS UI
-  ========================= */
   updateLivesUI() {
     this.livesText.setText(this.lives);
 
@@ -835,9 +769,6 @@ class GameScene extends Phaser.Scene {
     });
   }
 
-  /* =========================
-     GAME OVER SCREEN
-  ========================= */
   showGameOverScreen() {
     this.disableRow1();
     this.isResolving = true;
@@ -867,9 +798,6 @@ class GameScene extends Phaser.Scene {
     });
   }
 
-  /* =========================
-     RESULTS
-  ========================= */
   showResults() {
     this.sound.unlock();
 
@@ -924,7 +852,6 @@ class GameScene extends Phaser.Scene {
 
     let displayed = 0;
     let tickCounter = 0;
-
     const step = finalScore / totalSteps;
 
     this.time.addEvent({
@@ -1032,9 +959,6 @@ class GameScene extends Phaser.Scene {
     });
   }
 
-  /* =========================
-     AVANCE DEL CAMINO
-  ========================= */
   moveRowsDown(cb) {
     const D = 150;
 
