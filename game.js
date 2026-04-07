@@ -123,9 +123,9 @@ class GameScene extends Phaser.Scene {
     this.load.image('resultsBg', 'assets/backgrounds/gameoverbackground.png');
 
     // pantallas cambio de nivel
-    this.load.image('level1Screen', 'assets/backgrounds/level1.png');
-    this.load.image('level2Screen', 'assets/backgrounds/level2.png');
-    this.load.image('level3Screen', 'assets/backgrounds/level3.png');
+    this.load.image('level1Screen', 'assets/backgrounds/level1.jpg');
+    this.load.image('level2Screen', 'assets/backgrounds/level2.jpg');
+    this.load.image('level3Screen', 'assets/backgrounds/level3.jpg');
 
     // gameplay
     this.load.image('leaf', 'assets/game/leaf.png');
