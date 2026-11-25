@@ -86,7 +86,7 @@
     {"q":"Which of these is NOT a supply used in SZN 1–10?","answers":["314","315","313"],"correct":0},
     {"q":"Which of these supplies is rarer in SZN 1–10?","answers":["1776","1420","1000"],"correct":0},
     {"q":"What marks the end boundary of Epoch 1 in 6529 Calendar?","answers":["Dec 2026","Dec 2027","Dec 2028"],"correct":0},
-    {"q":"How many addresses can be consolidated into one 6529 Identity?","answers":["3","2","5"],"correct":0},
+    {"q":"How many addresses can be consolidated into one 6529 Identity?","answers":["4","6","5"],"correct":0},
     {"q":"In the 6529 calendar hierarchy,what is the smallest unit?","answers":["SZN","Year","Epoch"],"correct":0},
     {"q":"What does NIC primarily evaluate?","answers":["Identity authenticity","Wallet balance","Voting power"],"correct":0},
     {"q":"Only one statement is TRUE about the Meme Calendar","answers":["1 PERIOD = 5 EPOCHs","1 YEAR = 5 SZN","1 ERA = 4 PERIODs"],"correct":0},
